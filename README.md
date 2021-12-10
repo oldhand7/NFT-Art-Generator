@@ -14,9 +14,6 @@
 12. ???
 13. Profit
 
-## How to video guide
-[![Video guide](https://img.youtube.com/vi/mXuUX2EQlJQ/0.jpg)](https://www.youtube.com/watch?v=mXuUX2EQlJQ)
-
 ## Concepts
 ### Layer
 Image artwork is composed of many layers stacked on each other. Layers can have a percentage probability assigned.
