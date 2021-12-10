@@ -1,0 +1,71 @@
+
+
+<div class="container" fxLayout="column" fxLayoutAlign="space-between center" 
+style="height:100%; background-color: #0c0b0f;" 
+[ngStyle]="{'width': isExpanded ? '280px' : '50px', 'min-width': isExpanded ? '280px' : '50px'}">
+
+<div fxLayout="column" style="width: 100%; ">
+
+    <!-- Title -->
+
+    <div fxLayout="row" fxlayoutAlign="start center" fxLayoutGap="12px" style="padding:16px; user-select: none;">
+        <img src="assets/icons/logo.svg" height="18px">
+        <span style="font-size: 14px; color:white; font-weight: 900; min-width: 185px;" *ngIf="isExpanded;">NFT Art Generator</span>
+    </div>
+
+    
+    <div style="height:1px; width:100%; background: linear-gradient(to right, #6fbbee 0%, #047ef0 100%);"></div>
+
+
+
+
+    <!-- File explorer -->
+
+    <div fxLayout="row" class="light-text" style="margin: 6px 0 0 6px;" fxLayoutGap="12px" fxLayoutAlign="start center">
+        <button mat-icon-button matTooltip="Toggle file explorer" (click)="toggleClicked()" title="Toggle file explorer"><mat-icon >folder</mat-icon></button>
+        <span *ngIf="isExpanded" style="font-size: 14px; font-weight: 600; user-select: none;">File Explorer</span>
+        <button mat-icon-button (click)="toggleFiles()" *ngIf="isExpanded && nftDirectory" title="Toggle file explorer">
+            <mat-icon style="fill:white;" [ngClass]="expandedFiles ?  'rotate-icon' : 'normal-icon'" >expand_more</mat-icon>
+        </button>
+      </div>
+  
+  
+        <app-file-viewer  *ngIf="isExpanded && nftDirectory"
+        style="transition: max-height 0.2s  ease-in-out;" 
+        [ngStyle]="{'max-height': expandedFiles ? '100%' : '0px', 'overflow': expandedFiles ? 'none' : 'hidden'}" 
+        [nftDirectory]="nftDirectory">
+          
+        </app-file-viewer>
+
+
+    <!-- Metadata settings? -->
+
+    <div fxLayout="row" class="light-text" style="margin: 6px 0 0 6px;" fxLayoutGap="12px" fxLayoutAlign="start center">
+        <button mat-icon-button matTooltip="Toggle metadata settings" (click)="toggleClicked()" ><mat-icon >settings</mat-icon></button>
+        <span *ngIf="isExpanded" style="font-size: 14px; font-weight: 600; user-select: none;">Metadata</span>
+        <button mat-icon-button (click)="toggleMetadata()" *ngIf="isExpanded" >
+            <mat-icon style="fill:white;" [ngClass]="expandedMetadata ?  'rotate-icon' : 'normal-icon'" >expand_more</mat-icon>
+        </button>
+      </div>
+
+      <app-metadata-editor *ngIf="isExpanded" 
+      style="transition: max-height 0.2s  ease-in-out; margin-top: 16px;" 
+      [ngStyle]="{'max-height': expandedMetadata ? '100%' : '0px', 'overflow': expandedMetadata ? 'none' : 'hidden'}"
+      [blockChain]="blockChain"
+      [nftBaseName]="nftBaseName"
+      [nftDescription]="nftDescription"
+      [creatorAddress]="creatorAddress"
+      [royaltiesFee]="royaltiesFee"
+      [collectionName]="collectionName"
+      [solanaSymbol]="solanaSymbol"
+      [cardanoPolicyId]="cardanoPolicyId"
+      [baseImageAddress]="baseImageAddress"
+      [nftDirectory]="nftDirectory"
+      ></app-metadata-editor>
+
+
+</div>
+  
+
+
+  </div>

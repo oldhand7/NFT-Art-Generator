@@ -1,0 +1,9 @@
+{
+  "name": "appsus-nft-art-generator",
+  "version": "0.0.6",
+  "main": "main.js",
+  "private": true,
+  "dependencies": {
+    "@electron/remote": "1.2.0"
+  }
+}
